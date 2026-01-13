@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Journal Book - Transform Your Daily Life with Mindful Planning</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-purple: #6B46C1;
+            --secondary-blue: #3B82F6;
+            --accent-lavender: #E9D5FF;
+            --neutral-light: #F9FAFB;
+            --neutral-gray: #6B7280;
+            --text-dark: #1F2937;
+            --white: #FFFFFF;
+            --gradient-bg: linear-gradient(135deg, #6B46C1 0%, #3B82F6 100%);
+            --gradient-soft: linear-gradient(45deg, rgba(107, 70, 193, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+        }
+
+        /* Reduced Motion Preferences */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Enhanced Hero with Real Book Photography */
+        .hero {
+            background: linear-gradient(rgba(107, 70, 193, 0.8), rgba(59, 130, 246, 0.8)), 
+                        url('https://images.unsplash.com/photo-1519682337058-a94d519337bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 8rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            animation: heroSlideIn 1.5s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        /* Real Book Photography Section */
+        .real-books-showcase {
+            padding: 6rem 0;
+            background: var(--neutral-light);
+            position: relative;
+        }
+
+        .books-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .book-photo-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .book-photo-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .book-image-container {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+        }
+
+        .book-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .book-photo-card:hover .book-image {
+            transform: scale(1.1);
+        }
+
+        .human-model-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            color: var(--white);
+            padding: 2rem 1.5rem 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .book-photo-card:hover .human-model-overlay {
+            transform: translateY(0);
+        }
+
+        .model-info {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .book-details {
+            padding: 1.5rem;
+        }
+
+        .book-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-purple);
+            margin-bottom: 0.5rem;
+        }
+
+        .book-description {
+            color: var(--neutral-gray);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Lifestyle Photography Section */
+        .lifestyle-section {
+            padding: 6rem 0;
+            background: var(--white);
+        }
+
+        .lifestyle-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .lifestyle-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .lifestyle-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .lifestyle-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .lifestyle-content {
+            padding: 2rem;
+        }
+
+        .lifestyle-title {
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .lifestyle-text {
+            font-size: 1.1rem;
+            color: var(--neutral-gray);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        /* Human-Centric Product Showcases */
+        .human-product-showcase {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, var(--neutral-light) 0%, rgba(107, 70, 193, 0.05) 100%);
+        }
+
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .showcase-item {
+            background: var(--white);
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .showcase-item:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .showcase-image {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .showcase-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .human-interaction-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(107, 70, 193, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .showcase-item:hover .human-interaction-overlay {
+            opacity: 1;
+        }
+
+        .interaction-text {
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .interaction-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .interaction-desc {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Customer Testimonials with Real Photos */
+        .testimonials-section {
+            padding: 6rem 0;
+            background: var(--gradient-soft);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .customer-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1.5rem;
+            border: 4px solid var(--accent-lavender);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .customer-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-purple);
+            margin-bottom: 0.5rem;
+        }
+
+        .customer-role {
+            color: var(--neutral-gray);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: var(--text-dark);
+            line-height: 1.6;
+            position: relative;
+        }
+
+        .testimonial-text::before {
+            content: '"';
+            font-size: 3rem;
+            color: var(--accent-lavender);
+            position: absolute;
+            top: -1rem;
+            left: -1rem;
+            opacity: 0.5;
+        }
+
+        /* Real Book Categories with Human Context */
+        .real-categories {
+            padding: 6rem 0;
+            background: var(--white);
+        }
+
+        .category-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+            align-items: center;
+        }
+
+        .category-showcase:nth-child(even) {
+            direction: rtl;
+        }
+
+        .category-showcase:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        .category-image-real {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .category-image-real img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .category-showcase:hover .category-image-real img {
+            transform: scale(1.08);
+        }
+
+        .human-context-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--gradient-bg);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .category-content-real {
+            padding: 2rem;
+        }
+
+        .category-title-real {
+            font-size: 2rem;
+            color: var(--primary-purple);
+            margin-bottom: 1rem;
+        }
+
+        .category-desc-real {
+            font-size: 1.1rem;
+            color: var(--neutral-gray);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .usage-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-purple);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--neutral-gray);
+        }
+
+        /* Enhanced Product Cards with Real Photography */
+        .products-grid-enhanced {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .product-card-enhanced {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .product-card-enhanced:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-image-real {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .product-image-real img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card-enhanced:hover .product-image-real img {
+            transform: scale(1.1);
+        }
+
+        .human-model-indicator {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--primary-purple);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+
+        .product-info-enhanced {
+            padding: 2rem;
+        }
+
+        .product-title-enhanced {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-price-enhanced {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary-purple);
+            margin-bottom: 1rem;
+        }
+
+        .product-description-enhanced {
+            color: var(--neutral-gray);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .human-benefit {
+            background: var(--gradient-soft);
+            padding: 1rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary-purple);
+        }
+
+        .human-benefit-title {
+            font-weight: 600;
+            color: var(--primary-purple);
+            margin-bottom: 0.5rem;
+        }
+
+        .human-benefit-text {
+            font-size: 0.9rem;
+            color: var(--neutral-gray);
+        }
+
+        /* Responsive Design for Real Photos */
+        @media (max-width: 768px) {
+            .lifestyle-grid,
+            .category-showcase {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .category-showcase:nth-child(even) {
+                direction: ltr;
+            }
+
+            .hero {
+                padding: 4rem 0;
+                min-height: 80vh;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .books-gallery,
+            .showcase-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Loading Animation for Images */
+        .image-loading {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: imageLoading 1.5s infinite;
+        }
+
+        @keyframes imageLoading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* Smooth Animations */
+        @keyframes heroSlideIn {
+            0% { opacity: 0; transform: translateY(50px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Header and Navigation Styles */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 30px rgba(107, 70, 193, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            background: var(--gradient-bg);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-purple);
+        }
+
+        .btn {
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--gradient-bg);
+            color: var(--white);
+            box-shadow: 0 10px 30px rgba(107, 70, 193, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(107, 70, 193, 0.4);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: var(--text-dark);
+        }
+
+        /* Newsletter Section */
+        .newsletter {
+            background: var(--gradient-bg);
+            color: var(--white);
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 2rem auto 0;
+        }
+
+        .newsletter input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: var(--white);
+            padding: 4rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--neutral-gray);
+        }
+
+        /* Modal for Product Details */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .modal-content {
+            background: var(--white);
+            margin: 5% auto;
+            padding: 2.5rem;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 900px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .close {
+            color: var(--neutral-gray);
+            float: right;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="#home" class="logo">My Journal Book</a>
+            
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#real-books">Real Books</a></li>
+                <li><a href="#lifestyle">Lifestyle</a></li>
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            
+            <div class="nav-icons">
+                <a href="#" class="btn btn-primary">Cart (0)</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Enhanced Hero with Real Book Photography -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Transform Your Daily Life with Mindful Planning & Creative Expression</h1>
+                <p class="hero-subtitle">Beautifully crafted journals, planners, and coloring books designed to inspire creativity, boost productivity, and nurture personal growth</p>
+                <div class="hero-buttons">
+                    <a href="#real-books" class="btn btn-primary">See Real Books in Action</a>
+                    <a href="#shop" class="btn btn-secondary">Shop Collection</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Real Books Showcase with Human Models -->
+    <section id="real-books" class="real-books-showcase">
+        <div class="container">
+            <h2 class="section-title">Real People, Real Stories, Real Books</h2>
+            <p style="text-align: center; font-size: 1.2rem; color: var(--neutral-gray); margin-bottom: 3rem;">
+                See how our customers incorporate our books into their daily lives for mindfulness, productivity, and creative expression
+            </p>
+            
+            <div class="books-gallery">
+                <div class="book-photo-card">
+                    <div class="book-image-container">
+                        <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2081&q=80" alt="Woman reading coloring book in cozy cafe" class="book-image">
+                        <div class="human-model-overlay">
+                            <div class="model-info">
+                                <strong>Sarah, 28</strong><br>
+                                Graphic Designer<br>
+                                "My coloring book helps me unwind after work"
+                            </div>
+                        </div>
+                    </div>
+                    <div class="book-details">
+                        <h3 class="book-title">Mindful Moments Coloring Book</h3>
+                        <p class="book-description">Perfect for stress relief and creative expression. Features 50 beautifully illustrated pages.</p>
+                    </div>
+                </div>
+
+                <div class="book-photo-card">
+                    <div class="book-image-container">
+                        <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2098&q=80" alt="Person journaling in morning light" class="book-image">
+                        <div class="human-model-overlay">
+                            <div class="model-info">
+                                <strong>Michael, 35</strong><br>
+                                Marketing Manager<br>
+                                "Journaling changed my morning routine"
+                            </div>
+                        </div>
+                    </div>
+                    <div class="book-details">
+                        <h3 class="book-title">Daily Reflection Journal</h3>
+                        <p class="book-description">365 guided prompts for self-discovery and personal growth with premium paper quality.</p>
+                    </div>
+                </div>
+
+                <div class="book-photo-card">
+                    <div class="book-image-container">
+                        <img src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Student using study planner" class="book-image">
+                        <div class="human-model-overlay">
+                            <div class="model-info">
+                                <strong>Emma, 22</strong><br>
+                                University Student<br>
+                                "My study planner keeps me organized"
+                            </div>
+                        </div>
+                    </div>
+                    <div class="book-details">
+                        <h3 class="book-title">Academic Success Planner</h3>
+                        <p class="book-description">Complete study organization system with assignment tracking and goal setting.</p>
+                    </div>
+                </div>
+
+                <div class="book-photo-card">
+                    <div class="book-image-container">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Group of friends planning travel together" class="book-image">
+                        <div class="human-model-overlay">
+                            <div class="model-info">
+                                <strong>Travel Group</strong><br>
+                                Adventure Seekers<br>
+                                "Planning our dream trip together"
+                            </div>
+                        </div>
+                    </div>
+                    <div class="book-details">
+                        <h3 class="book-title">Adventure Travel Planner</h3>
+                        <p class="book-description">Complete travel organization with itineraries, budget tracking, and memory keeping.</p>
+                    </div>
+                </div>
+
+                <div class="book-photo-card">
+                    <div class="book-image-container">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Person practicing mindfulness with book" class="book-image">
+                        <div class="human-model-overlay">
+                            <div class="model-info">
+                                <strong>David, 42</strong><br>
+                                Yoga Instructor<br>
+                                "Mindfulness challenges transformed my practice"
+                            </div>
+                        </div>
+                    </div>
+                    <div class="book-details">
+                        <h3 class="book-title">30-Day Mindfulness Challenge</h3>
+                        <p class="book-description">Daily practices to reduce stress and increase awareness with guided exercises.</p>
+                    </div>
+                </div>
+
+                <div class="book-photo-card">
+                    <div class="book-image-container">
+                        <img src="https://images.unsplash.com/photo-1604886345252-39e6acd2117e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Mother and daughter coloring together" class="book-image">
+                        <div class="human-model-overlay">
+                            <div class="model-info">
+                                <strong>Lisa & Daughter</strong><br>
+                                Creative Family<br>
+                                "Coloring time is our bonding time"
+                            </div>
+                        </div>
+                    </div>
+                    <div class="book-details">
+                        <h3 class="book-title">Family Coloring Collection</h3>
+                        <p class="book-description">Beautiful illustrations perfect for family creative time and stress relief.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lifestyle Photography Section -->
+    <section id="lifestyle" class="lifestyle-section">
+        <div class="container">
+            <h2 class="section-title">Bringing Our Books to Life</h2>
+            
+            <div class="lifestyle-grid">
+                <div class="lifestyle-image">
+                    <img src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2067&q=80" alt="Morning journaling routine with coffee">
+                </div>
+                <div class="lifestyle-content">
+                    <h3 class="lifestyle-title">Morning Rituals Reimagined</h3>
+                    <p class="lifestyle-text">
+                        Start your day with intention. Our customers share how incorporating our journals into their morning routine has transformed their mindset and productivity. From gratitude practices to goal-setting, these simple tools create powerful habits.
+                    </p>
+                    <div class="usage-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">87%</div>
+                            <div class="stat-label">Report better focus</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">92%</div>
+                            <div class="stat-label">Feel less stressed</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">76%</div>
+                            <div class="stat-label">Improved sleep quality</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lifestyle-grid" style="margin-top: 4rem;">
+                <div class="lifestyle-content">
+                    <h3 class="lifestyle-title">Creative Expression Unleashed</h3>
+                    <p class="lifestyle-text">
+                        Our coloring books aren't just for children. Adults worldwide are discovering the therapeutic benefits of creative expression. From busy professionals to retirees, people are finding peace and mindfulness through the simple act of coloring.
+                    </p>
+                    <div class="usage-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">15min</div>
+                            <div class="stat-label">Daily coloring reduces stress</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">65%</div>
+                            <div class="stat-label">Improved mood after coloring</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">1000+</div>
+                            <div class="stat-label">Completed pages daily</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lifestyle-image">
+                    <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Adult coloring for stress relief">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Human-Centric Product Showcases -->
+    <section class="human-product-showcase">
+        <div class="container">
+            <h2 class="section-title">Experience Our Books Through Real Stories</h2>
+            
+            <div class="showcase-grid">
+                <div class="showcase-item">
+                    <div class="showcase-image">
+                        <img src="https://images.unsplash.com/photo-1605003689961-422d5f0f8c97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Student using study planner">
+                        <div class="human-interaction-overlay">
+                            <div class="interaction-text">
+                                <div class="interaction-title">Academic Excellence</div>
+                                <div class="interaction-desc">"This planner helped me organize my studies and improve my grades significantly."</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-info-enhanced">
+                        <h3 class="product-title-enhanced">Study Success Planner</h3>
+                        <p class="product-price-enhanced">$22.99</p>
+                        <p class="product-description-enhanced">Designed with input from top students and educators for maximum academic performance.</p>
+                        <div class="human-benefit">
+                            <div class="human-benefit-title">Student-Tested Features</div>
+                            <div class="human-benefit-text">Based on feedback from 500+ university students who improved their GPAs by an average of 0.7 points.</div>
+                        </div>
+                        <button class="btn btn-primary" onclick="openProductModal('study-planner')">View Details</button>
+                    </div>
+                </div>
+
+                <div class="showcase-item">
+                    <div class="showcase-image">
+                        <img src="https://images.unsplash.com/photo-1594737625785-a6cbdabd333c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Traveler using planner">
+                        <div class="human-interaction-overlay">
+                            <div class="interaction-text">
+                                <div class="interaction-title">Adventure Awaits</div>
+                                <div class="interaction-desc">"Planned my dream vacation perfectly with this comprehensive travel organizer."</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-info-enhanced">
+                        <h3 class="product-title-enhanced">Adventure Travel Planner</h3>
+                        <p class="product-price-enhanced">$29.99</p>
+                        <p class="product-description-enhanced">Your complete companion for organizing unforgettable travel experiences.</p>
+                        <div class="human-benefit">
+                            <div class="human-benefit-title">Traveler-Approved Design</div>
+                            <div class="human-benefit-text">Created with input from experienced travelers who've visited 50+ countries.</div>
+                        </div>
+                        <button class="btn btn-primary" onclick="openProductModal('travel-planner')">View Details</button>
+                    </div>
+                </div>
+
+                <div class="showcase-item">
+                    <div class="showcase-image">
+                        <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Person practicing mindfulness">
+                        <div class="human-interaction-overlay">
+                            <div class="interaction-text">
+                                <div class="interaction-title">Mindful Living</div>
+                                <div class="interaction-desc">"These daily practices transformed my mental health and overall wellbeing."</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-info-enhanced">
+                        <h3 class="product-title-enhanced">30-Day Mindfulness Challenge</h3>
+                        <p class="product-price-enhanced">$16.99</p>
+                        <p class="product-description-enhanced">Evidence-based mindfulness exercises to reduce stress and increase awareness.</p>
+                        <div class="human-benefit">
+                            <div class="human-benefit-title">Expert-Developed Content</div>
+                            <div class="human-benefit-text">Created with licensed therapists and mindfulness coaches for maximum effectiveness.</div>
+                        </div>
+                        <button class="btn btn-primary" onclick="openProductModal('challenge-book')">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Testimonials with Real Photos -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title">Real People, Real Transformations</h2>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Sarah M." class="customer-photo">
+                    <div class="customer-name">Sarah M.</div>
+                    <div class="customer-role">Marketing Manager, 32</div>
+                    <div class="testimonial-text">
+                        The Daily Reflection Journal has become my morning ritual. I've discovered so much about myself and feel more centered throughout the day. The quality is exceptional!
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="James L." class="customer-photo">
+                    <div class="customer-name">James L.</div>
+                    <div class="customer-role">Graduate Student, 26</div>
+                    <div class="testimonial-text">
+                        The Study Planner helped me organize my thesis work and improved my time management significantly. I went from feeling overwhelmed to being in control of my schedule.
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Maria R." class="customer-photo">
+                    <div class="customer-name">Maria R.</div>
+                    <div class="customer-role">Yoga Instructor, 38</div>
+                    <div class="testimonial-text">
+                        The Mindfulness Challenge book transformed my daily practice. Each day's exercise is thoughtfully crafted and easy to incorporate into busy life. Highly recommend!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Real Book Categories with Human Context -->
+    <section class="real-categories">
+        <div class="container">
+            <h2 class="section-title">How Real People Use Our Books</h2>
+            
+            <div class="category-showcase">
+                <div class="category-image-real">
+                    <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Students using study planners">
+                    <div class="human-context-badge">Student Life</div>
+                </div>
+                <div class="category-content-real">
+                    <h3 class="category-title-real">Academic Success</h3>
+                    <p class="category-desc-real">
+                        Join thousands of students who have transformed their study habits with our planners. From high school to graduate studies, our books help organize assignments, track progress, and achieve academic goals.
+                    </p>
+                    <div class="usage-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">15,000+</div>
+                            <div class="stat-label">Students helped</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">0.8</div>
+                            <div class="stat-label">Average GPA increase</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">92%</div>
+                            <div class="stat-label">Report less stress</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-showcase">
+                <div class="category-content-real">
+                    <h3 class="category-title-real">Creative Expression</h3>
+                    <p class="category-desc-real">
+                        Artists, designers, and creative professionals use our coloring books and journals to unlock creativity, reduce stress, and find inspiration in their daily lives.
+                    </p>
+                    <div class="usage-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">25min</div>
+                            <div class="stat-label">Daily creative time</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">78%</div>
+                            <div class="stat-label">Feel more creative</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">65%</div>
+                            <div class="stat-label">Reduced stress levels</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="category-image-real">
+                    <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Artist using coloring book">
+                    <div class="human-context-badge">Creative Professionals</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Products Section with Real Photography -->
+    <section id="shop" class="products-section">
+        <div class="container">
+            <h2 class="section-title">Featured Books - As Used by Our Community</h2>
+            <div class="products-grid-enhanced">
+                <div class="product-card-enhanced">
+                    <div class="product-image-real">
+                        <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Coloring book with colored pencils">
+                        <div class="human-model-indicator">Adult-Tested</div>
+                    </div>
+                    <div class="product-info-enhanced">
+                        <h3 class="product-title-enhanced">Mindful Moments Coloring Book</h3>
+                        <p class="product-price-enhanced">$24.99</p>
+                        <p class="product-description-enhanced">50 beautifully illustrated pages for stress relief and creative expression, tested by 500+ adults.</p>
+                        <div class="human-benefit">
+                            <div class="human-benefit-title">Stress Relief Proven</div>
+                            <div class="human-benefit-text">87% of users report reduced stress after 15 minutes of coloring. Perfect for busy professionals and parents.</div>
+                        </div>
+                        <button class="btn btn-primary" onclick="openProductModal('coloring-book')">View Details</button>
+                    </div>
+                </div>
+
+                <div class="product-card-enhanced">
+                    <div class="product-image-real">
+                        <img src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Study planner with student">
+                        <div class="human-model-indicator">Student-Approved</div>
+                    </div>
+                    <div class="product-info-enhanced">
+                        <h3 class="product-title-enhanced">Academic Success Planner</h3>
+                        <p class="product-price-enhanced">$22.99</p>
+                        <p class="product-description-enhanced">Complete study organization system designed with input from top-performing students.</p>
+                        <div class="human-benefit">
+                            <div class="human-benefit-title">Grade Improvement Focused</div>
+                            <div class="human-benefit-text">Based on study habits of 1000+ high-achieving students with average GPA of 3.8+.</div>
+                        </div>
+                        <button class="btn btn-primary" onclick="openProductModal('study-planner')">View Details</button>
+                    </div>
+                </div>
+
+                <div class="product-card-enhanced">
+                    <div class="product-image-real">
+                        <img src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Morning journaling routine">
+                        <div class="human-model-indicator">Wellness-Expert Approved</div>
+                    </div>
+                    <div class="product-info-enhanced">
+                        <h3 class="product-title-enhanced">Daily Reflection Journal</h3>
+                        <p class="product-price-enhanced">$19.99</p>
+                        <p class="product-description-enhanced">365 guided prompts for self-discovery and personal growth with premium paper quality.</p>
+                        <div class="human-benefit">
+                            <div class="human-benefit-title">Therapist-Developed Prompts</div>
+                            <div class="human-benefit-text">Created with licensed therapists to promote mental wellness and self-awareness.</div>
+                        </div>
+                        <button class="btn btn-primary" onclick="openProductModal('journal')">View Details</button>
+                    </div>
+                </div>
+
+                <div class="product-card-enhanced">
+                    <div class="product-image-real">
+                        <img src="https://images.unsplash.com/photo-1594737625785-a6cbdabd333c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Travel planning adventure">
+                        <div class="human-model-indicator">Traveler-Designed</div>
+                    </div>
+                    <div class="product-info-enhanced">
+                        <h3 class="product-title-enhanced">Adventure Travel Planner</h3>
+                        <p class="product-price-enhanced">$29.99</p>
+                        <p class="product-description-enhanced">Complete travel organization system tested by experienced travelers visiting 50+ countries.</p>
+                        <div class="human-benefit">
+                            <div class="human-benefit-title">Globetrotter Tested</div>
+                            <div class="human-benefit-text">Features requested by 200+ experienced travelers and digital nomads worldwide.</div>
+                        </div>
+                        <button class="btn btn-primary" onclick="openProductModal('travel-planner')">View Details</button>
+                    </div>
+                </div>
+
+                <div class="product-card-enhanced">
+                    <div class="product-image-real">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Habit tracking success">
+                        <div class="human-model-indicator">Habit-Expert Approved</div>
+                    </div>
+                    <div class="product-info-enhanced">
+                        <h3 class="product-title-enhanced">Habit Builder Tracker</h3>
+                        <p class="product-price-enhanced">$18.99</p>
+                        <p class="product-description-enhanced">12-month habit tracking system based on behavioral psychology research.</p>
+                        <div class="human-benefit">
+                            <div class="human-benefit-title">Science-Based Method</div>
+                            <div class="human-benefit-text">Developed using proven habit formation techniques from behavioral science research.</div>
+                        </div>
+                        <button class="btn btn-primary" onclick="openProductModal('habit-tracker')">View Details</button>
+                    </div>
+                </div>
+
+                <div class="product-card-enhanced">
+                    <div class="product-image-real">
+                        <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Mindfulness practice">
+                        <div class="human-model-indicator">Mindfulness-Expert Created</div>
+                    </div>
+                    <div class="product-info-enhanced">
+                        <h3 class="product-title-enhanced">30-Day Mindfulness Challenge</h3>
+                        <p class="product-price-enhanced">$16.99</p>
+                        <p class="product-description-enhanced">Evidence-based mindfulness exercises to reduce stress and increase awareness.</p>
+                        <div class="human-benefit">
+                            <div class="human-benefit-title">Clinically-Proven Techniques</div>
+                            <div class="human-benefit-text">Exercises based on mindfulness-based stress reduction (MBSR) programs used in healthcare.</div>
+                        </div>
+                        <button class="btn btn-primary" onclick="openProductModal('challenge-book')">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Join Our Community of 10,000+ Happy Customers</h2>
+            <p>Get weekly inspiration, real customer stories, and exclusive offers delivered to your inbox</p>
+            <form class="newsletter-form" onsubmit="handleNewsletterSignup(event)">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit" class="btn btn-secondary">Subscribe Now</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="featured-categories">
+        <div class="container">
+            <h2 class="section-title">Our Story - Real People, Real Impact</h2>
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <p style="font-size: 1.2rem; margin-bottom: 2rem;">
+                    Founded with a simple belief: that everyone deserves beautiful tools to organize their thoughts, 
+                    express their creativity, and achieve their goals. What started as a passion project has grown 
+                    into a trusted resource for thousands of customers worldwide.
+                </p>
+                <div style="font-size: 1.1rem; color: var(--neutral-gray); margin-top: 2rem;">
+                    <strong>10,000+ Happy Customers • 50,000+ Books Sold • 4.8/5 Average Rating</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="products-section">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div style="max-width: 600px; margin: 0 auto;">
+                <form onsubmit="handleContactSubmit(event)" style="background: var(--neutral-light); padding: 2.5rem; border-radius: 20px;">
+                    <div style="margin-bottom: 1.5rem;">
+                        <label for="name" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Your Name</label>
+                        <input type="text" id="name" required style="width: 100%; padding: 1rem; border: 2px solid var(--accent-lavender); border-radius: 12px; font-size: 1rem;">
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <label for="email" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Email Address</label>
+                        <input type="email" id="email" required style="width: 100%; padding: 1rem; border: 2px solid var(--accent-lavender); border-radius: 12px; font-size: 1rem;">
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <label for="subject" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Subject</label>
+                        <input type="text" id="subject" required style="width: 100%; padding: 1rem; border: 2px solid var(--accent-lavender); border-radius: 12px; font-size: 1rem;">
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <label for="message" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Message</label>
+                        <textarea id="message" rows="5" required style="width: 100%; padding: 1rem; border: 2px solid var(--accent-lavender); border-radius: 12px; font-size: 1rem; resize: vertical;"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                </form>
+                
+                <div style="text-align: center; margin-top: 2rem;">
+                    <p style="margin-bottom: 1rem; font-size: 1.1rem;">Or reach us directly:</p>
+                    <p style="margin-bottom: 0.5rem;"><strong>WhatsApp:</strong> +94 753155504</p>
+                    <p style="margin-bottom: 0.5rem;"><strong>Email:</strong> hello@myjournalbook.com</p>
+                    <p><strong>Business Hours:</strong> Monday-Friday 9AM-6PM, Saturday 10AM-4PM</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>My Journal Book</h3>
+                    <p>Transforming lives through mindful planning and creative expression. Join thousands of satisfied customers worldwide.</p>
+                    <div style="margin-top: 1rem;">
+                        <a href="#" style="margin-right: 1rem;">📘 Facebook</a>
+                        <a href="#" style="margin-right: 1rem;">📷 Instagram</a>
+                        <a href="#">📌 Pinterest</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#real-books">Real Stories</a></li>
+                        <li><a href="#lifestyle">Lifestyle</a></li>
+                        <li><a href="#shop">Shop</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><a href="#">Coloring Books</a></li>
+                        <li><a href="#">Journals</a></li>
+                        <li><a href="#">Study Planners</a></li>
+                        <li><a href="#">Travel Planners</a></li>
+                        <li><a href="#">Habit Trackers</a></li>
+                        <li><a href="#">Challenge Books</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Customer Service</h3>
+                    <ul>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns & Exchanges</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Track Your Order</a></li>
+                        <li><a href="#">Customer Reviews</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 My Journal Book. All rights reserved. | 10,000+ Happy Customers Worldwide | Designed with ❤️ for creative minds</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Product Detail Modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeProductModal()">&times;</span>
+            <div id="modalContent">
+                <!-- Dynamic content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Newsletter Signup
+        function handleNewsletterSignup(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('input[type="email"]').value;
+            alert(`Thank you for subscribing! We'll send real customer stories and exclusive offers to ${email}`);
+            event.target.reset();
+        }
+
+        // Contact Form Submit
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            alert(`Thank you for your message, ${data.name}! We'll get back to you within 24 hours.`);
+            event.target.reset();
+        }
+
+        // Product Modal
+        const productData = {
+            'coloring-book': {
+                title: 'Mindful Moments Coloring Book',
+                price: '$24.99',
+                rating: 4.8,
+                reviews: 127,
+                description: 'Unwind and rediscover the joy of coloring with our Mindful Moments Coloring Book. Featuring 50 beautifully illustrated pages ranging from simple patterns to intricate designs, this book is perfect for stress relief and creative expression.',
+                benefits: [
+                    '50 unique illustrations from simple to complex',
+                    'Premium bleed-resistant paper',
+                    'Perfect for markers, colored pencils, and gel pens',
+                    'Spiral binding for easy page turning',
+                    'Includes color testing pages'
+                ],
+                formats: ['Physical Book', 'Digital Download', 'Bundle (Physical + Digital)'],
+                images: ['🎨', '🖼️', '🌸', '🍃']
+            }
+        };
+
+        function openProductModal(productId) {
+            const modal = document.getElementById('productModal');
+            const modalContent = document.getElementById('modalContent');
+            const product = productData[productId];
+            
+            if (product) {
+                modalContent.innerHTML = `
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                        <div>
+                            <h2>${product.title}</h2>
+                            <div style="margin: 1rem 0;">
+                                ${Array(Math.floor(product.rating)).fill('⭐').join('')}
+                                <span style="color: var(--neutral-gray);">(${product.reviews} reviews)</span>
+                            </div>
+                            <div style="font-size: 2rem; font-weight: 800; color: var(--primary-purple); margin: 1rem 0;">${product.price}</div>
+                            <p>${product.description}</p>
+                        </div>
+                        <div>
+                            <h4>Key Benefits:</h4>
+                            <ul style="list-style: none; padding: 0;">
+                                ${product.benefits.map(benefit => `<li style="padding: 0.5rem 0;">✓ ${benefit}</li>`).join('')}
+                            </ul>
+                            <div style="margin-top: 2rem;">
+                                <label>Format:</label>
+                                <select style="width: 100%; padding: 0.5rem; margin: 0.5rem 0 1rem;">
+                                    ${product.formats.map(format => `<option>${format}</option>`).join('')}
+                                </select>
+                                <button class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">Add to Cart</button>
+                                <button class="btn btn-secondary" style="width: 100%;">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                modal.style.display = 'block';
+            }
+        }
+
+        function closeProductModal() {
+            document.getElementById('productModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('productModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        let cartCount = 0;
+        function addToCart() {
+            cartCount++;
+            document.querySelector('.btn-primary').textContent = `Cart (${cartCount})`;
+            alert('Item added to cart!');
+        }
+    </script>
+</body>
+</html>
